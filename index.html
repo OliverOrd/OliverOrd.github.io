@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<script src="helpers.js"></script>
+		<script>
+		let randList = [];
+		function genRandList() {
+			let items = getList();
+			let completeList = [];
+			let i = 0;
+			while(i < 25) {
+				const index = Math.round(randNum(0, items.length - 1));
+				const pick = items[index];
+				if (!completeList.includes(pick)) {
+					completeList.push(pick);
+					i++;
+				}
+			}
+			
+			randList = completeList;
+		}
+		
+		function showList() {
+			genRandList();
+			document.getElementById("list").innerHTML = randList.map(item => `${item}<br>`).join("");
+		}
+		
+		function copyList() {
+			copyToClipboard(randList.join(" "));
+		}
+		</script>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<style>
+		body {
+			font-family: monospace;
+			text-align: center;
+			color: black;
+			padding-top: 10px;
+		}
+		</style>
+	</head>
+	<body>
+		<button onclick="showList()" class="btn btn-primary">Generate new random list</button>
+		<br><br>
+		<button onclick="copyList()" class="btn btn-primary">Copy random list</button>
+		<br><br>
+		<p id="list"></p>
+		<script>showList();</script>
+	</body>
+</html>
