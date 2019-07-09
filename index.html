@@ -3,8 +3,8 @@
 		<script src="helpers.js"></script>
 		<script>
 		let randList = [];
-		function genRandList() {
-			let items = getList();
+		function genRandList(category) {
+			let items = getList()[category].split("\n");
 			let completeList = [];
 			let i = 0;
 			while(i < 25) {
@@ -19,8 +19,8 @@
 			randList = completeList;
 		}
 		
-		function showList() {
-			genRandList();
+		function showList(category) {
+			genRandList(category);
 			document.getElementById("list").innerHTML = randList.map(item => `${item}<br>`).join("");
 		}
 		
@@ -39,9 +39,11 @@
 		</style>
 	</head>
 	<body>
-		<button onclick="showList()" class="btn btn-primary">Generate new random list</button>
+		<button onclick="showList('drones')" class="btn btn-primary">Generate "Drone" Hashtags</button>
 		<br><br>
-		<button onclick="copyList()" class="btn btn-primary">Copy random list</button>
+		<button onclick="showList('travel')" class="btn btn-primary">Generate "Travel" Hashtags</button>
+		<br><br>
+		<button onclick="showList('photography')" class="btn btn-primary">Generate "Photography" Hashtags</button>
 		<br><br>
 		<p id="list"></p>
 		<script>showList();</script>
