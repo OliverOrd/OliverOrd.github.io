@@ -1,4 +1,4 @@
-const items = `#lovel
+const items = `#love
 #instagood
 #photooftheday
 #fashion
